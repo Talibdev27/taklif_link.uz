@@ -30,6 +30,7 @@ export default function AdminDashboard() {
     bride: '',
     groom: '',
     weddingDate: '',
+    weddingTime: '18:00',
     venue: '',
     venueAddress: '',
     template: 'standard',
@@ -249,6 +250,7 @@ export default function AdminDashboard() {
         bride: '',
         groom: '',
         weddingDate: '',
+        weddingTime: '18:00',
         venue: '',
         venueAddress: '',
         template: 'standard',
@@ -463,6 +465,7 @@ export default function AdminDashboard() {
       bride: '',
       groom: '',
       weddingDate: '',
+      weddingTime: '18:00',
       venue: '',
       venueAddress: '',
       template: 'standard',
@@ -1154,6 +1157,18 @@ export default function AdminDashboard() {
                         className="wedding-input"
                         value={newWedding.weddingDate}
                         onChange={(e) => handleFormChange('weddingDate', e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Ceremony Time
+                      </label>
+                      <Input 
+                        placeholder="e.g., 18:00, 6:00 PM" 
+                        className="wedding-input"
+                        value={newWedding.weddingTime}
+                        onChange={(e) => handleFormChange('weddingTime', e.target.value)}
                       />
                     </div>
                   </div>

@@ -275,7 +275,11 @@
   "dashboard.public": "Публичный",
   "dashboard.view": "Просмотр",
   "dashboard.manage": "Управление",
-  "dashboard.weddingWebsite": "Свадебный Сайт",
-  "dashboard.publicWebsites": "Публичные Сайты",
-  "dashboard.upcomingEvents": "Предстоящие События"
+  "dashboard.weddingWebsite": "Свадебный сайт",
+  "dashboard.publicWebsites": "Публичные сайты",
+  "dashboard.upcomingEvents": "Предстоящие события",
+  "createWedding.ceremonyTime": "Время церемонии",
+  "createWedding.ceremonyTimePlaceholder": "например, 18:00, 6:00 вечера",
+  "getStarted.ceremonyTime": "Время церемонии",
+  "getStarted.ceremonyTimePlaceholder": "например, 18:00, 6:00 вечера"
 } 

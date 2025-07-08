@@ -280,5 +280,9 @@
   "dashboard.manage": "Manage",
   "dashboard.weddingWebsite": "Wedding Website",
   "dashboard.publicWebsites": "Public Websites",
-  "dashboard.upcomingEvents": "Upcoming Events"
+  "dashboard.upcomingEvents": "Upcoming Events",
+  "createWedding.ceremonyTime": "Ceremony Time",
+  "createWedding.ceremonyTimePlaceholder": "e.g., 18:00, 6:00 PM",
+  "getStarted.ceremonyTime": "Ceremony Time",
+  "getStarted.ceremonyTimePlaceholder": "e.g., 18:00, 6:00 PM"
 } 

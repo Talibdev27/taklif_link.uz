@@ -277,7 +277,11 @@
   "dashboard.public": "Ommaviy",
   "dashboard.view": "Ko'rish",
   "dashboard.manage": "Boshqarish",
-  "dashboard.weddingWebsite": "To'y Veb-sayti",
-  "dashboard.publicWebsites": "Ommaviy Veb-saytlar",
-  "dashboard.upcomingEvents": "Yaqinlashayotgan Tadbirlar"
+  "dashboard.weddingWebsite": "To'y vebsayti",
+  "dashboard.publicWebsites": "Ommaviy vebsaytlar",
+  "dashboard.upcomingEvents": "Yaqinlashayotgan hodisalar",
+  "createWedding.ceremonyTime": "Marosim vaqti",
+  "createWedding.ceremonyTimePlaceholder": "masalan, 18:00, 6:00 kechqurun",
+  "getStarted.ceremonyTime": "Marosim vaqti",
+  "getStarted.ceremonyTimePlaceholder": "masalan, 18:00, 6:00 kechqurun"
 } 
