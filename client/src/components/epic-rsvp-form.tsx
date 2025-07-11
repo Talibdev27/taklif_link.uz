@@ -106,161 +106,148 @@ export function EpicRSVPForm({ weddingId, primaryColor = '#1976d2', accentColor 
   }
 
   return (
-    <div className="max-w-lg mx-auto">
-      <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-        {/* Header */}
-        <div className="text-center py-8 px-6 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-2">{t('rsvp.title')}</h3>
-          <p className="text-gray-600">{t('rsvp.subtitle')}</p>
-        </div>
-        
-        {/* Form Content */}
-        <div className="p-8">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              {/* Guest Name */}
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-gray-700 font-medium text-sm">{t('rsvp.guestName')}</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder={t('rsvp.enterFullName')} 
-                        {...field} 
-                        className="h-12 border-gray-200 rounded-lg focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-200"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-700 font-medium">{t('rsvp.guestName')}</FormLabel>
+              <FormControl>
+                <Input 
+                  placeholder={t('rsvp.enterFullName')} 
+                  {...field} 
+                  className="border-gray-300"
+                  style={{
+                    '--tw-ring-color': primaryColor + '50',
+                    borderColor: field.value ? primaryColor + '30' : undefined
+                  } as any}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = primaryColor;
+                    e.target.style.boxShadow = `0 0 0 3px ${primaryColor}20`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = field.value ? primaryColor + '30' : '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-              {/* RSVP Status with beautiful radio buttons */}
-              <FormField
-                control={form.control}
-                name="rsvpStatus"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-gray-700 font-medium text-sm">{t('rsvp.willYouAttend')}</FormLabel>
-                    <FormControl>
-                      <RadioGroup
-                        onValueChange={(value) => {
-                          field.onChange(value);
-                          // Set additionalGuests to 1 when confirmed_with_guest is selected
-                          if (value === 'confirmed_with_guest') {
-                            form.setValue('additionalGuests', 1);
-                            form.setValue('plusOne', true);
-                          } else {
-                            form.setValue('additionalGuests', 0);
-                            form.setValue('plusOne', false);
-                          }
-                        }}
-                        defaultValue={field.value}
-                        className="space-y-3 mt-3"
-                      >
-                        <div className="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:border-green-200 hover:bg-green-50/30 transition-all duration-200">
-                          <RadioGroupItem 
-                            value="confirmed" 
-                            id="confirmed" 
-                            className="border-2 border-green-400 text-green-600"
-                          />
-                          <Label htmlFor="confirmed" className="text-gray-700 font-medium cursor-pointer flex-1">
-                            ✅ {t('rsvp.confirmedEmoji')}
-                          </Label>
-                        </div>
-                        
-                        <div className="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-200">
-                          <RadioGroupItem 
-                            value="confirmed_with_guest" 
-                            id="confirmed_with_guest" 
-                            className="border-2 border-blue-400 text-blue-600"
-                          />
-                          <Label htmlFor="confirmed_with_guest" className="text-gray-700 font-medium cursor-pointer flex-1">
-                            👥 {t('rsvp.confirmedWithGuest')}
-                          </Label>
-                        </div>
-                        
-                        <div className="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:border-red-200 hover:bg-red-50/30 transition-all duration-200">
-                          <RadioGroupItem 
-                            value="declined" 
-                            id="declined" 
-                            className="border-2 border-red-400 text-red-600"
-                          />
-                          <Label htmlFor="declined" className="text-gray-700 font-medium cursor-pointer flex-1">
-                            ❌ {t('rsvp.declinedEmoji')}
-                          </Label>
-                        </div>
-                        
-                        <div className="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:border-yellow-200 hover:bg-yellow-50/30 transition-all duration-200">
-                          <RadioGroupItem 
-                            value="maybe" 
-                            id="maybe" 
-                            className="border-2 border-yellow-400 text-yellow-600"
-                          />
-                          <Label htmlFor="maybe" className="text-gray-700 font-medium cursor-pointer flex-1">
-                            🤔 {t('rsvp.maybeEmoji')}
-                          </Label>
-                        </div>
-                      </RadioGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Message */}
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-gray-700 font-medium text-sm">{t('rsvp.message')}</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder={t('rsvp.shareMessage')} 
-                        {...field} 
-                        value={field.value || ''}
-                        className="min-h-[100px] border-gray-200 rounded-lg focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all duration-200 resize-none"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Beautiful Submit Button */}
-              <Button
-                type="submit"
-                className="w-full h-12 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-6"
-                style={{ 
-                  background: `linear-gradient(135deg, ${primaryColor}, ${accentColor})`,
-                  border: 'none'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-                }}
-                disabled={submitRSVP.isPending}
-              >
-                {submitRSVP.isPending ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>{t('common.loading')}</span>
+        <FormField
+          control={form.control}
+          name="rsvpStatus"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-700 font-medium">{t('rsvp.willYouAttend')}</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    // Set additionalGuests to 1 when confirmed_with_guest is selected
+                    if (value === 'confirmed_with_guest') {
+                      form.setValue('additionalGuests', 1);
+                      form.setValue('plusOne', true);
+                    } else {
+                      form.setValue('additionalGuests', 0);
+                      form.setValue('plusOne', false);
+                    }
+                  }}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-3"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem 
+                      value="confirmed" 
+                      id="confirmed" 
+                      className="border-2"
+                      style={{ borderColor: primaryColor, color: primaryColor }}
+                    />
+                    <Label htmlFor="confirmed" className="text-gray-700">{t('rsvp.confirmedEmoji')}</Label>
                   </div>
-                ) : (
-                  t('rsvp.submit')
-                )}
-              </Button>
-            </form>
-          </Form>
-        </div>
-      </div>
-    </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem 
+                      value="confirmed_with_guest" 
+                      id="confirmed_with_guest" 
+                      className="border-2"
+                      style={{ borderColor: primaryColor, color: primaryColor }}
+                    />
+                    <Label htmlFor="confirmed_with_guest" className="text-gray-700">{t('rsvp.confirmedWithGuest')}</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem 
+                      value="declined" 
+                      id="declined" 
+                      className="border-2"
+                      style={{ borderColor: primaryColor, color: primaryColor }}
+                    />
+                    <Label htmlFor="declined" className="text-gray-700">{t('rsvp.declinedEmoji')}</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem 
+                      value="maybe" 
+                      id="maybe" 
+                      className="border-2"
+                      style={{ borderColor: primaryColor, color: primaryColor }}
+                    />
+                    <Label htmlFor="maybe" className="text-gray-700">{t('rsvp.maybeEmoji')}</Label>
+                  </div>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-700 font-medium">{t('rsvp.message')}</FormLabel>
+              <FormControl>
+                <Textarea 
+                  placeholder={t('rsvp.shareMessage')} 
+                  {...field} 
+                  value={field.value || ''}
+                  className="border-gray-300 min-h-[80px]"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = primaryColor;
+                    e.target.style.boxShadow = `0 0 0 3px ${primaryColor}20`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = field.value ? primaryColor + '30' : '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="w-full text-white font-medium py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          style={{ 
+            background: `linear-gradient(to right, ${primaryColor}, ${accentColor})`,
+            border: 'none'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = '0.9';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = '1';
+          }}
+          disabled={submitRSVP.isPending}
+        >
+          {submitRSVP.isPending ? t('common.loading') : t('rsvp.submit')}
+        </Button>
+      </form>
+    </Form>
   );
 }

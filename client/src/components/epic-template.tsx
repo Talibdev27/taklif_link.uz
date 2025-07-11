@@ -350,12 +350,17 @@ export function EpicTemplate({ wedding }: EpicTemplateProps) {
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto px-4">
-            <EpicRSVPForm 
-              weddingId={wedding.id} 
-              primaryColor={primaryColor}
-              accentColor={accentColor}
-            />
+          <div className="max-w-2xl mx-auto">
+            <div 
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border mx-2 sm:mx-0"
+              style={{ borderColor: `${primaryColor}20` }}
+            >
+              <EpicRSVPForm 
+                weddingId={wedding.id} 
+                primaryColor={primaryColor}
+                accentColor={accentColor}
+              />
+            </div>
           </div>
         </div>
       </section>
