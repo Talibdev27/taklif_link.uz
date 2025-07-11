@@ -470,6 +470,7 @@ export default function AdminDashboard() {
       weddingTime: '18:00',
       venue: '',
       venueAddress: '',
+      dressCode: '',
       template: 'standard',
       story: '',
       dearGuestMessage: '',
@@ -1209,6 +1210,22 @@ export default function AdminDashboard() {
                         value={newWedding.venueAddress}
                         onChange={(e) => handleFormChange('venueAddress', e.target.value)}
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Dress Code (Optional)
+                      </label>
+                      <textarea 
+                        className="w-full p-3 border border-gray-200 rounded-lg bg-white resize-none" 
+                        rows={3}
+                        placeholder="e.g., Formal attire, Cocktail dress, Beach casual..."
+                        value={newWedding.dressCode || ''}
+                        onChange={(e) => handleFormChange('dressCode', e.target.value)}
+                      ></textarea>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Specify attire expectations for guests. Only shows if filled.
+                      </p>
                     </div>
 
                     <div>

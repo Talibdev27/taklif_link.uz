@@ -39,6 +39,7 @@ export const weddings = pgTable("weddings", {
   primaryColor: varchar("primary_color", { length: 20 }).notNull().default("#D4B08C"),
   accentColor: varchar("accent_color", { length: 20 }).notNull().default("#89916B"),
   backgroundMusicUrl: text("background_music_url"),
+  dressCode: text("dress_code"),
   isPublic: boolean("is_public").notNull().default(true),
   availableLanguages: json("available_languages").$type<string[]>().notNull().default(['en']),
   defaultLanguage: varchar("default_language", { length: 10 }).notNull().default("en"),
