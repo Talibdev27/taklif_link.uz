@@ -10,31 +10,11 @@ const resources = {
   uz: { translation: uz },
 };
 
-// Get initial language from URL params, localStorage, or default to 'en'
-const getInitialLanguage = () => {
-  // First check URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const langFromUrl = urlParams.get('lang');
-  
-  if (langFromUrl && ['en', 'uz', 'ru'].includes(langFromUrl)) {
-    return langFromUrl;
-  }
-  
-  // Then check localStorage
-  const savedLanguage = localStorage.getItem('language');
-  if (savedLanguage && ['en', 'uz', 'ru'].includes(savedLanguage)) {
-    return savedLanguage;
-  }
-  
-  // Default to English
-  return 'en';
-};
-
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: getInitialLanguage(),
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

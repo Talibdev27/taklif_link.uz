@@ -19,30 +19,13 @@ export function EpicTemplate({ wedding }: EpicTemplateProps) {
   const { t, i18n } = useTranslation();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  // Set language based on wedding settings and URL parameters
+  // Force language based on wedding settings
   useEffect(() => {
-    if (!wedding) return;
-    
-    // Check URL parameters first
-    const urlParams = new URLSearchParams(window.location.search);
-    const langFromUrl = urlParams.get('lang');
-    
-    let targetLanguage = wedding.defaultLanguage;
-    
-    // If URL has a valid language parameter and wedding supports it, use URL language
-    if (langFromUrl && wedding.availableLanguages?.includes(langFromUrl)) {
-      targetLanguage = langFromUrl;
+    if (wedding?.defaultLanguage && i18n.language !== wedding.defaultLanguage) {
+      console.log('Epic template: Setting language to', wedding.defaultLanguage);
+      i18n.changeLanguage(wedding.defaultLanguage);
     }
-    
-    // Only change language if it's different from current and valid
-    if (targetLanguage && 
-        i18n.language !== targetLanguage && 
-        ['en', 'uz', 'ru'].includes(targetLanguage)) {
-      console.log('Epic template: Setting language to', targetLanguage);
-      i18n.changeLanguage(targetLanguage);
-      localStorage.setItem('language', targetLanguage);
-    }
-  }, [wedding?.defaultLanguage, wedding?.availableLanguages, i18n]);
+  }, [wedding?.defaultLanguage, i18n]);
 
   // Get the appropriate locale for date formatting
   const getDateLocale = () => {

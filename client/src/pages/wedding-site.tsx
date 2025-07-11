@@ -46,30 +46,13 @@ export default function WeddingSite() {
     enabled: !!wedding?.id,
   });
 
-  // Set language based on wedding's default language and URL parameters
+  // Set language based on wedding's default language
   useEffect(() => {
-    if (!wedding) return;
-    
-    // Check URL parameters first
-    const urlParams = new URLSearchParams(window.location.search);
-    const langFromUrl = urlParams.get('lang');
-    
-    let targetLanguage = wedding.defaultLanguage;
-    
-    // If URL has a valid language parameter and wedding supports it, use URL language
-    if (langFromUrl && wedding.availableLanguages?.includes(langFromUrl)) {
-      targetLanguage = langFromUrl;
+    if (wedding?.defaultLanguage && i18n.language !== wedding.defaultLanguage) {
+      console.log('Wedding site: Setting language to', wedding.defaultLanguage);
+      i18n.changeLanguage(wedding.defaultLanguage);
     }
-    
-    // Only change language if it's different from current and valid
-    if (targetLanguage && 
-        i18n.language !== targetLanguage && 
-        ['en', 'uz', 'ru'].includes(targetLanguage)) {
-      console.log('Wedding site: Setting language to', targetLanguage);
-      i18n.changeLanguage(targetLanguage);
-      localStorage.setItem('language', targetLanguage);
-    }
-  }, [wedding?.defaultLanguage, wedding?.availableLanguages, i18n]);
+  }, [wedding?.defaultLanguage, i18n]);
 
   if (isLoading) {
     return <WeddingPageLoading message={t('common.loading')} />;
