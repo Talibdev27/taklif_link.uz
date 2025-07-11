@@ -46,7 +46,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const verifyToken = async (authToken: string) => {
     try {
-      const response = await fetch('/api/auth/verify', {
+      // Always send the token in the Authorization header
+      const response = await fetch('/api/user/current', {
         headers: {
           'Authorization': `Bearer ${authToken}`
         }
@@ -62,7 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
         logout();
       } else {
-        const { user: verifiedUser } = await response.json();
+        const verifiedUser = await response.json();
         setUser(verifiedUser);
         localStorage.setItem('currentUser', JSON.stringify(verifiedUser));
         setSessionError(null);
@@ -96,6 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setToken(data.token);
       setUser(data.user);
       localStorage.setItem('authToken', data.token);
+      localStorage.setItem('token', data.token); // <-- Add this line for guest manager compatibility
       localStorage.setItem('currentUser', JSON.stringify(data.user));
 
       // Set token expiry reminder

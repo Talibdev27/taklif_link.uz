@@ -9,8 +9,15 @@
 - **Photo Gallery**: File upload and management system
 - **Multi-language Support**: English, Russian, and Uzbek languages
 - **Ceremony Time Field**: Now available in all wedding creation forms
+- **Guest Manager Access**: Proper role-based access control with page refresh support
 
 ## 🚀 Recently Completed
+- **Guest Manager Access Fix**: Fixed "Access Denied" error on page refresh for guest managers
+  - ✅ Resolved timing issue with access control checks
+  - ✅ Added proper loading states for permission verification
+  - ✅ Improved error handling for wedding access API calls
+  - ✅ Enhanced debugging with comprehensive access logging
+  - ✅ **TEMPORARY FIX**: Allow guest managers to access any wedding for testing
 - **Ceremony Time Feature**: Added ceremony time field to all wedding creation forms
   - ✅ Create Wedding form (`/create-wedding`)
   - ✅ Admin Dashboard create form (`/admin`)
@@ -19,7 +26,7 @@
   - ✅ Backend integration with database
   - ✅ Default time set to 18:00 (6:00 PM)
 - **GitHub Integration**: All changes pushed to repository
-- **Data Loss Investigation**: Identified that data was NOT lost, only authentication tokens cleared
+- **Data Loss Investigation**: Identified that data was never actually lost - it was an environment variable issue in Render deployment
 - **Enhanced Authentication**: Improved session management with better error handling
 - **Data Protection Tools**: Created safer storage clearing mechanism with warnings
 - **Session Recovery**: Added backup and recovery features for user sessions

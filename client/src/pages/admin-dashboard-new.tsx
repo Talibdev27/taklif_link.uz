@@ -13,9 +13,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Users, Calendar, Camera, MessageSquare, Settings,
   TrendingUp, Heart, MapPin, Mail, Shield, Search,
-  Eye, Trash2, Edit, BarChart3, Globe, LogOut, Images
+  Eye, Trash2, Edit, BarChart3, Globe, LogOut, Images, UserPlus
 } from "lucide-react";
 import type { Wedding, User, Guest, Photo } from "@shared/schema";
+import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { GuestManagerAssignment } from '@/components/guest-manager-assignment';
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -721,6 +723,17 @@ export default function AdminDashboard() {
                               <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                               <span className="ml-1 text-xs sm:hidden">Del</span>
                             </Button>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button variant="outline" size="sm" className="min-h-[44px] sm:min-h-[36px] p-2">
+                                  <UserPlus className="h-3 w-3 sm:h-4 sm:w-4" />
+                                  <span className="ml-1 text-xs sm:hidden">Assign Guest Manager</span>
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent>
+                                <GuestManagerAssignment wedding={wedding} />
+                              </DialogContent>
+                            </Dialog>
                           </div>
                         </div>
                       );

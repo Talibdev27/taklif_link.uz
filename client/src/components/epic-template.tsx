@@ -290,6 +290,24 @@ export function EpicTemplate({ wedding }: EpicTemplateProps) {
         </div>
       </section>
 
+      {/* Love Story Section */}
+      {wedding?.story && (
+        <section className="py-12 sm:py-16 lg:py-20" style={{ background: `linear-gradient(135deg, ${primaryColor}05, ${accentColor}05)` }}>
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-6 sm:mb-8" style={{ color: primaryColor }}>
+              {t('wedding.ourStory')}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border mx-2 sm:mx-0" style={{ borderColor: `${primaryColor}20` }}>
+                <p className="text-gray-700 leading-relaxed text-base sm:text-lg lg:text-xl whitespace-pre-wrap">
+                  {wedding.story}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* RSVP Section */}
       <section 
         id="rsvp" 
