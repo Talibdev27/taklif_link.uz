@@ -44,7 +44,7 @@ ALTER TABLE "weddings" ALTER COLUMN "accent_color" SET DATA TYPE varchar(20);-->
 -- ALTER TABLE "weddings" ALTER COLUMN "available_languages" SET DATA TYPE json USING array_to_json(available_languages);--> statement-breakpoint
 ALTER TABLE "weddings" ALTER COLUMN "available_languages" SET DEFAULT '["en"]'::json;--> statement-breakpoint
 ALTER TABLE "weddings" ALTER COLUMN "default_language" SET DATA TYPE varchar(10);--> statement-breakpoint
-ALTER TABLE "budget_categories" ADD COLUMN "budget_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "budget_categories" ADD COLUMN "budget_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
 ALTER TABLE "budget_categories" ADD COLUMN "spent_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
 ALTER TABLE "budget_categories" ADD COLUMN "is_archived" boolean DEFAULT false NOT NULL;--> statement-breakpoint
 ALTER TABLE "budget_items" ADD COLUMN "wedding_id" integer NOT NULL;--> statement-breakpoint
