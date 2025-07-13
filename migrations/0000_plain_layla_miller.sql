@@ -23,13 +23,13 @@
 --   "created_at" timestamp DEFAULT now() NOT NULL
 -- );
 --> statement-breakpoint
-CREATE TABLE "guest_book_entries" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"wedding_id" integer NOT NULL,
-	"guest_name" text NOT NULL,
-	"message" text NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL
-);
+-- CREATE TABLE "guest_book_entries" (
+--   "id" serial PRIMARY KEY NOT NULL,
+--   "wedding_id" integer NOT NULL,
+--   "guest_name" text NOT NULL,
+--   "message" text NOT NULL,
+--   "created_at" timestamp DEFAULT now() NOT NULL
+-- );
 --> statement-breakpoint
 CREATE TABLE "guest_collaborators" (
 	"id" serial PRIMARY KEY NOT NULL,
