@@ -150,11 +150,11 @@
   "rsvp.failedToUpdate": "RSVP yangilanmadi. Iltimos, qayta urinib ko'ring.",
   "rsvp.letUsKnow": "Kelishingiz mumkinligini bizga bildiring!",
   "rsvp.receivedRsvp": "RSVP javobingizni oldik va siz bilan bayram qilishni intizorlik bilan kutmoqdamiz!",
-  "rsvp.confirmedEmoji": "Ha, albatta boraman!",
+  "rsvp.confirmedEmoji": "✅ Ha, albatta boraman!",
   "rsvp.confirmedWithGuest": "Ha, mehmon bilan",
   "rsvp.confirmedWithGuestEmoji": "👥 Ha, mehmon bilan boraman",
   "rsvp.declinedEmoji": "❌ Afsus, kela olmayman",
-  "rsvp.maybeEmoji": "Hali aniq emasman 🤔",
+  "rsvp.maybeEmoji": "🤔 Hali aniq emasman",
   "rsvp.updating": "Yangilanmoqda...",
   "rsvp.confirmRsvp": "RSVP ni tasdiqlash",
   "rsvp.leaveMessage": "Xabar qoldiring (ixtiyoriy)",
@@ -283,5 +283,8 @@
   "createWedding.ceremonyTime": "Marosim vaqti",
   "createWedding.ceremonyTimePlaceholder": "masalan, 18:00, 6:00 kechqurun",
   "getStarted.ceremonyTime": "Marosim vaqti",
-  "getStarted.ceremonyTimePlaceholder": "masalan, 18:00, 6:00 kechqurun"
+  "getStarted.ceremonyTimePlaceholder": "masalan, 18:00, 6:00 kechqurun",
+  "guestBook.form.namePlaceholder": "Ismingizni kiriting",
+  "guestBook.form.messagePlaceholder": "Xabaringizni yozing",
+  "guestBook.form.submit": "Xabar yuborish"
 } 

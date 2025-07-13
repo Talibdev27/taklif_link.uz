@@ -176,7 +176,7 @@ export function EpicRSVPForm({ weddingId, primaryColor = '#1976d2', accentColor 
                       className="border-2"
                       style={{ borderColor: primaryColor, color: primaryColor }}
                     />
-                    <Label htmlFor="confirmed_with_guest" className="text-gray-700">{t('rsvp.confirmedWithGuest')}</Label>
+                    <Label htmlFor="confirmed_with_guest" className="text-gray-700">{t('rsvp.confirmedWithGuestEmoji')}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem 

@@ -154,7 +154,7 @@
   "rsvp.confirmedWithGuest": "Да, с гостем",
   "rsvp.confirmedWithGuestEmoji": "👥 Да, с гостем",
   "rsvp.declinedEmoji": "❌ К сожалению, не смогу",
-  "rsvp.maybeEmoji": "Я еще не уверен 🤔",
+  "rsvp.maybeEmoji": "�� Я еще не уверен",
   "rsvp.updating": "Обновление...",
   "rsvp.confirmRsvp": "Подтвердить RSVP",
   "rsvp.leaveMessage": "Оставьте сообщение (по желанию)",
@@ -281,5 +281,8 @@
   "createWedding.ceremonyTime": "Время церемонии",
   "createWedding.ceremonyTimePlaceholder": "например, 18:00, 6:00 вечера",
   "getStarted.ceremonyTime": "Время церемонии",
-  "getStarted.ceremonyTimePlaceholder": "например, 18:00, 6:00 вечера"
+  "getStarted.ceremonyTimePlaceholder": "например, 18:00, 6:00 вечера",
+  "guestBook.form.namePlaceholder": "Введите ваше имя",
+  "guestBook.form.messagePlaceholder": "Напишите ваше сообщение",
+  "guestBook.form.submit": "Отправить сообщение"
 } 
