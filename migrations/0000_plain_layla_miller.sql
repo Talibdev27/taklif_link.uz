@@ -10,18 +10,18 @@
 --   "created_at" timestamp DEFAULT now() NOT NULL
 -- );
 --> statement-breakpoint
-CREATE TABLE "budget_items" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"category_id" integer NOT NULL,
-	"name" text NOT NULL,
-	"estimated_cost" integer NOT NULL,
-	"actual_cost" integer DEFAULT 0 NOT NULL,
-	"is_paid" boolean DEFAULT false NOT NULL,
-	"vendor" text,
-	"due_date" timestamp,
-	"notes" text,
-	"created_at" timestamp DEFAULT now() NOT NULL
-);
+-- CREATE TABLE "budget_items" (
+--   "id" serial PRIMARY KEY NOT NULL,
+--   "category_id" integer NOT NULL,
+--   "name" text NOT NULL,
+--   "estimated_cost" integer NOT NULL,
+--   "actual_cost" integer DEFAULT 0 NOT NULL,
+--   "is_paid" boolean DEFAULT false NOT NULL,
+--   "vendor" text,
+--   "due_date" timestamp,
+--   "notes" text,
+--   "created_at" timestamp DEFAULT now() NOT NULL
+-- );
 --> statement-breakpoint
 CREATE TABLE "guest_book_entries" (
 	"id" serial PRIMARY KEY NOT NULL,
