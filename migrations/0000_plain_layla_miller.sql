@@ -31,17 +31,17 @@
 --   "created_at" timestamp DEFAULT now() NOT NULL
 -- );
 --> statement-breakpoint
-CREATE TABLE "guest_collaborators" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"wedding_id" integer NOT NULL,
-	"email" text NOT NULL,
-	"name" text NOT NULL,
-	"role" text DEFAULT 'editor' NOT NULL,
-	"invited_at" timestamp DEFAULT now() NOT NULL,
-	"accepted_at" timestamp,
-	"last_active_at" timestamp,
-	"status" text DEFAULT 'pending' NOT NULL
-);
+-- CREATE TABLE "guest_collaborators" (
+--   "id" serial PRIMARY KEY NOT NULL,
+--   "wedding_id" integer NOT NULL,
+--   "email" text NOT NULL,
+--   "name" text NOT NULL,
+--   "role" text DEFAULT 'editor' NOT NULL,
+--   "invited_at" timestamp DEFAULT now() NOT NULL,
+--   "accepted_at" timestamp,
+--   "last_active_at" timestamp,
+--   "status" text DEFAULT 'pending' NOT NULL
+-- );
 --> statement-breakpoint
 CREATE TABLE "guests" (
 	"id" serial PRIMARY KEY NOT NULL,
