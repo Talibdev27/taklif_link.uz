@@ -1,14 +1,14 @@
-CREATE TABLE "budget_categories" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"wedding_id" integer NOT NULL,
-	"name" text NOT NULL,
-	"estimated_cost" integer NOT NULL,
-	"actual_cost" integer DEFAULT 0 NOT NULL,
-	"is_paid" boolean DEFAULT false NOT NULL,
-	"priority" text DEFAULT 'medium' NOT NULL,
-	"notes" text,
-	"created_at" timestamp DEFAULT now() NOT NULL
-);
+-- CREATE TABLE "budget_categories" (
+--   "id" serial PRIMARY KEY NOT NULL,
+--   "wedding_id" integer NOT NULL,
+--   "name" text NOT NULL,
+--   "estimated_cost" integer NOT NULL,
+--   "actual_cost" integer DEFAULT 0 NOT NULL,
+--   "is_paid" boolean DEFAULT false NOT NULL,
+--   "priority" text DEFAULT 'medium' NOT NULL,
+--   "notes" text,
+--   "created_at" timestamp DEFAULT now() NOT NULL
+-- );
 --> statement-breakpoint
 CREATE TABLE "budget_items" (
 	"id" serial PRIMARY KEY NOT NULL,
