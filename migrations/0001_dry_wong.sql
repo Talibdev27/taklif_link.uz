@@ -45,17 +45,17 @@ ALTER TABLE "weddings" ALTER COLUMN "accent_color" SET DATA TYPE varchar(20);-->
 ALTER TABLE "weddings" ALTER COLUMN "available_languages" SET DEFAULT '["en"]'::json;--> statement-breakpoint
 ALTER TABLE "weddings" ALTER COLUMN "default_language" SET DATA TYPE varchar(10);--> statement-breakpoint
 -- ALTER TABLE "budget_categories" ADD COLUMN "budget_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
-ALTER TABLE "budget_categories" ADD COLUMN "spent_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
-ALTER TABLE "budget_categories" ADD COLUMN "is_archived" boolean DEFAULT false NOT NULL;--> statement-breakpoint
-ALTER TABLE "budget_items" ADD COLUMN "wedding_id" integer NOT NULL;--> statement-breakpoint
-ALTER TABLE "guest_collaborators" ADD COLUMN "permissions" json DEFAULT '{"canEditDetails":false,"canManageGuests":true,"canViewAnalytics":true,"canManagePhotos":false,"canEditGuestBook":false}'::json NOT NULL;--> statement-breakpoint
-ALTER TABLE "guest_collaborators" ADD COLUMN "created_at" timestamp DEFAULT now() NOT NULL;--> statement-breakpoint
-ALTER TABLE "guests" ADD COLUMN "response_text" text;--> statement-breakpoint
-ALTER TABLE "invitations" ADD COLUMN "recipient_contact" varchar(255) NOT NULL;--> statement-breakpoint
-ALTER TABLE "milestones" ADD COLUMN "due_date" timestamp NOT NULL;--> statement-breakpoint
-ALTER TABLE "milestones" ADD COLUMN "priority" varchar(20) DEFAULT 'medium' NOT NULL;--> statement-breakpoint
-ALTER TABLE "milestones" ADD COLUMN "assigned_to" varchar(255);--> statement-breakpoint
-ALTER TABLE "weddings" ADD COLUMN "dress_code" text;--> statement-breakpoint
+-- ALTER TABLE "budget_categories" ADD COLUMN "spent_amount" integer DEFAULT 0 NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "budget_categories" ADD COLUMN "is_archived" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "budget_items" ADD COLUMN "wedding_id" integer NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "guest_collaborators" ADD COLUMN "permissions" json DEFAULT '{"canEditDetails":false,"canManageGuests":true,"canViewAnalytics":true,"canManagePhotos":false,"canEditGuestBook":false}'::json NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "guest_collaborators" ADD COLUMN "created_at" timestamp DEFAULT now() NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "guests" ADD COLUMN "response_text" text;--> statement-breakpoint
+-- ALTER TABLE "invitations" ADD COLUMN "recipient_contact" varchar(255) NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "milestones" ADD COLUMN "due_date" timestamp NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "milestones" ADD COLUMN "priority" varchar(20) DEFAULT 'medium' NOT NULL;--> statement-breakpoint
+-- ALTER TABLE "milestones" ADD COLUMN "assigned_to" varchar(255);--> statement-breakpoint
+-- ALTER TABLE "weddings" ADD COLUMN "dress_code" text;--> statement-breakpoint
 ALTER TABLE "budget_items" ADD CONSTRAINT "budget_items_wedding_id_weddings_id_fk" FOREIGN KEY ("wedding_id") REFERENCES "public"."weddings"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "budget_categories" DROP COLUMN "estimated_cost";--> statement-breakpoint
 ALTER TABLE "budget_categories" DROP COLUMN "actual_cost";--> statement-breakpoint
