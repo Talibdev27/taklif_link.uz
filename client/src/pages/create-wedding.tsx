@@ -29,10 +29,12 @@ const createWeddingSchema = insertWeddingSchema.extend({
     }, {
       message: "Wedding date must be today or in the future",
     }),
+  weddingTime: insertWeddingSchema.shape.weddingTime.optional().default("18:00"),
 });
 
 type CreateWeddingFormData = InsertWedding & {
   weddingDate: Date;
+  weddingTime?: string;
 };
 
 const templateOptions = [
@@ -100,6 +102,7 @@ export default function CreateWedding() {
       bride: "",
       groom: "",
       weddingDate: new Date(),
+      weddingTime: "18:00",
       venue: "",
       venueAddress: "",
       template: "gardenRomance",
@@ -139,6 +142,7 @@ export default function CreateWedding() {
           bride: data.bride,
           groom: data.groom,
           weddingDate: data.weddingDate.toISOString(),
+          weddingTime: data.weddingTime || "18:00",
           venue: data.venue,
           venueAddress: data.venueAddress,
           story: data.story || "",
@@ -336,6 +340,28 @@ export default function CreateWedding() {
                       </FormItem>
                     )}
                   />
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="weddingTime"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-charcoal font-semibold">
+                            {t('createWedding.ceremonyTime')}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={t('createWedding.ceremonyTimePlaceholder')}
+                              className="wedding-input"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
                   <FormField
                     control={form.control}

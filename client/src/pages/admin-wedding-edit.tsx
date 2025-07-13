@@ -461,6 +461,25 @@ export default function AdminWeddingEdit() {
 
                     <div>
                       <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Dress Code (Optional)
+                      </label>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Specify attire expectations for guests. Only shows if filled.
+                      </p>
+                      {editMode ? (
+                        <Input
+                          value={weddingData?.dressCode || ''}
+                          onChange={(e) => handleInputChange('dressCode', e.target.value)}
+                          className="wedding-input"
+                          placeholder="e.g., Formal attire, Cocktail dress, Beach casual..."
+                        />
+                      ) : (
+                        <p className="p-3 bg-gray-50 rounded-lg">{wedding.dressCode || 'Not specified'}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
                         Map Pin URL (Optional)
                       </label>
                       <p className="text-sm text-gray-600 mb-3">
@@ -477,6 +496,72 @@ export default function AdminWeddingEdit() {
                         <p className="p-3 bg-gray-50 rounded-lg">
                           {wedding.mapPinUrl || 'Not set - using venue address'}
                         </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Couple Photo (Optional)
+                      </label>
+                      <p className="text-xs text-gray-500 mb-1">
+                        Upload a couple photo to use as the hero image instead of template background
+                      </p>
+                      {editMode ? (
+                        <>
+                          {weddingData?.couplePhotoUrl && (
+                            <div className="mb-2">
+                              <img 
+                                src={weddingData.couplePhotoUrl} 
+                                alt="Couple" 
+                                className="w-32 h-32 object-cover rounded-lg border mb-2" 
+                              />
+                              <button 
+                                type="button"
+                                onClick={() => handleInputChange('couplePhotoUrl', '')}
+                                className="text-red-500 text-sm hover:underline block mb-2"
+                              >
+                                Remove photo
+                              </button>
+                            </div>
+                          )}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const formData = new FormData();
+                              formData.append('photo', file);
+                              try {
+                                const token = localStorage.getItem('adminToken');
+                                const response = await fetch('/api/upload/couple-photo', {
+                                  method: 'POST',
+                                  headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
+                                  body: formData
+                                });
+                                if (response.ok) {
+                                  const result = await response.json();
+                                  handleInputChange('couplePhotoUrl', result.url);
+                                } else {
+                                  alert('Failed to upload photo');
+                                }
+                              } catch (err) {
+                                alert('Failed to upload photo');
+                              }
+                            }}
+                            className="mb-2"
+                          />
+                        </>
+                      ) : (
+                        wedding.couplePhotoUrl ? (
+                          <img 
+                            src={wedding.couplePhotoUrl} 
+                            alt="Couple" 
+                            className="w-32 h-32 object-cover rounded-lg border mb-2" 
+                          />
+                        ) : (
+                          <span className="text-gray-400">No couple photo uploaded</span>
+                        )
                       )}
                     </div>
 

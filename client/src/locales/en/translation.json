@@ -154,7 +154,7 @@
   "rsvp.confirmedWithGuest": "Yes, with a guest",
   "rsvp.confirmedWithGuestEmoji": "👥 Yes, with a guest",
   "rsvp.declinedEmoji": "❌ Sorry, can't make it",
-  "rsvp.maybeEmoji": "I'm not sure yet 🤔",
+  "rsvp.maybeEmoji": "🤔 I'm not sure yet",
   "rsvp.updating": "Updating...",
   "rsvp.confirmRsvp": "Confirm RSVP",
   "rsvp.leaveMessage": "Leave a message (optional)",
@@ -280,5 +280,12 @@
   "dashboard.manage": "Manage",
   "dashboard.weddingWebsite": "Wedding Website",
   "dashboard.publicWebsites": "Public Websites",
-  "dashboard.upcomingEvents": "Upcoming Events"
+  "dashboard.upcomingEvents": "Upcoming Events",
+  "createWedding.ceremonyTime": "Ceremony Time",
+  "createWedding.ceremonyTimePlaceholder": "e.g., 18:00, 6:00 PM",
+  "getStarted.ceremonyTime": "Ceremony Time",
+  "getStarted.ceremonyTimePlaceholder": "e.g., 18:00, 6:00 PM",
+  "guestBook.form.namePlaceholder": "Enter your name",
+  "guestBook.form.messagePlaceholder": "Write your message",
+  "guestBook.form.submit": "Submit Message"
 } 

@@ -51,9 +51,19 @@ export default function UserLogin() {
         title: "Login Successful",
         description: "Welcome back! Redirecting...",
       });
-      
-      // Redirect will be handled by the App component based on user role
-      setLocation('/dashboard');
+      // Redirect based on user role
+      const storedUser = localStorage.getItem('currentUser');
+      let userRole = null;
+      if (storedUser) {
+        try {
+          userRole = JSON.parse(storedUser).role;
+        } catch {}
+      }
+      if (userRole === 'guest_manager') {
+        setLocation('/guest-manager');
+      } else {
+        setLocation('/dashboard');
+      }
       
     } catch (error) {
       toast({

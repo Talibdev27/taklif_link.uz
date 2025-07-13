@@ -29,6 +29,7 @@ const getStartedSchema = z.object({
   bride: z.string().min(1, "Bride's name is required"),
   groom: z.string().min(1, "Groom's name is required"),
   weddingDate: z.date(),
+  weddingTime: z.string().default("18:00"),
   venue: z.string().min(1, "Venue is required"),
   venueAddress: z.string().min(1, "Venue address is required"),
   template: z.string().default("gardenRomance"),
@@ -93,6 +94,7 @@ export default function GetStarted() {
       bride: "",
       groom: "",
       weddingDate: new Date(),
+      weddingTime: "18:00",
       venue: "",
       venueAddress: "",
       template: "gardenRomance",
@@ -113,7 +115,8 @@ export default function GetStarted() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             ...data,
-            weddingDate: data.weddingDate.toISOString()
+            weddingDate: data.weddingDate.toISOString(),
+            weddingTime: data.weddingTime || "18:00"
           })
         });
         
@@ -424,6 +427,26 @@ export default function GetStarted() {
                             className="wedding-input"
                             value={formatDateForInput(field.value)}
                             onChange={(e) => field.onChange(new Date(e.target.value))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="weddingTime"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-charcoal font-semibold">
+                          {t('getStarted.ceremonyTime')}
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder={t('getStarted.ceremonyTimePlaceholder')}
+                            className="wedding-input"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />

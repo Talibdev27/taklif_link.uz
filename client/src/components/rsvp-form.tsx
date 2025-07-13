@@ -152,7 +152,7 @@ export function RSVPForm({ weddingId, className = '' }: RSVPFormProps) {
                         <FormControl>
                           <RadioGroupItem value="confirmed_with_guest" id="confirmed_with_guest" />
                         </FormControl>
-                        <Label htmlFor="confirmed_with_guest" className="text-base font-medium text-gray-700">{t('rsvp.confirmedWithGuest')}</Label>
+                        <Label htmlFor="confirmed_with_guest" className="text-base font-medium text-gray-700">{t('rsvp.confirmedWithGuestEmoji')}</Label>
                       </FormItem>
                       <FormItem className="flex items-center space-x-3">
                         <FormControl>

@@ -13,9 +13,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Users, Calendar, Camera, MessageSquare, Settings,
   TrendingUp, Heart, MapPin, Mail, Shield, Search,
-  Eye, Trash2, Edit, BarChart3, Globe, LogOut, Images
+  Eye, Trash2, Edit, BarChart3, Globe, LogOut, Images, UserPlus
 } from "lucide-react";
 import type { Wedding, User, Guest, Photo } from "@shared/schema";
+import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { GuestManagerAssignment } from '@/components/guest-manager-assignment';
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -30,6 +32,7 @@ export default function AdminDashboard() {
     bride: '',
     groom: '',
     weddingDate: '',
+    weddingTime: '18:00',
     venue: '',
     venueAddress: '',
     template: 'standard',
@@ -249,6 +252,7 @@ export default function AdminDashboard() {
         bride: '',
         groom: '',
         weddingDate: '',
+        weddingTime: '18:00',
         venue: '',
         venueAddress: '',
         template: 'standard',
@@ -463,8 +467,10 @@ export default function AdminDashboard() {
       bride: '',
       groom: '',
       weddingDate: '',
+      weddingTime: '18:00',
       venue: '',
       venueAddress: '',
+      dressCode: '',
       template: 'standard',
       story: '',
       dearGuestMessage: '',
@@ -718,6 +724,17 @@ export default function AdminDashboard() {
                               <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                               <span className="ml-1 text-xs sm:hidden">Del</span>
                             </Button>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button variant="outline" size="sm" className="min-h-[44px] sm:min-h-[36px] p-2">
+                                  <UserPlus className="h-3 w-3 sm:h-4 sm:w-4" />
+                                  <span className="ml-1 text-xs sm:hidden">Assign Guest Manager</span>
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent>
+                                <GuestManagerAssignment wedding={wedding} />
+                              </DialogContent>
+                            </Dialog>
                           </div>
                         </div>
                       );
@@ -1156,6 +1173,18 @@ export default function AdminDashboard() {
                         onChange={(e) => handleFormChange('weddingDate', e.target.value)}
                       />
                     </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Ceremony Time
+                      </label>
+                      <Input 
+                        placeholder="e.g., 18:00, 6:00 PM" 
+                        className="wedding-input"
+                        value={newWedding.weddingTime}
+                        onChange={(e) => handleFormChange('weddingTime', e.target.value)}
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-4">
@@ -1181,6 +1210,22 @@ export default function AdminDashboard() {
                         value={newWedding.venueAddress}
                         onChange={(e) => handleFormChange('venueAddress', e.target.value)}
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-[#2C3338] mb-2">
+                        Dress Code (Optional)
+                      </label>
+                      <textarea 
+                        className="w-full p-3 border border-gray-200 rounded-lg bg-white resize-none" 
+                        rows={3}
+                        placeholder="e.g., Formal attire, Cocktail dress, Beach casual..."
+                        value={newWedding.dressCode || ''}
+                        onChange={(e) => handleFormChange('dressCode', e.target.value)}
+                      ></textarea>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Specify attire expectations for guests. Only shows if filled.
+                      </p>
                     </div>
 
                     <div>

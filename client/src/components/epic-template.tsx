@@ -290,6 +290,53 @@ export function EpicTemplate({ wedding }: EpicTemplateProps) {
         </div>
       </section>
 
+      {/* Love Story Section */}
+      {wedding?.story && (
+        <section className="py-12 sm:py-16 lg:py-20" style={{ background: `linear-gradient(135deg, ${primaryColor}05, ${accentColor}05)` }}>
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-6 sm:mb-8" style={{ color: primaryColor }}>
+              {t('wedding.ourStory')}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border mx-2 sm:mx-0" style={{ borderColor: `${primaryColor}20` }}>
+                <p className="text-gray-700 leading-relaxed text-base sm:text-lg lg:text-xl whitespace-pre-wrap">
+                  {wedding.story}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Dress Code Section - Only shows if dress code is specified */}
+      {wedding?.dressCode && (
+        <section className="py-12 sm:py-16 lg:py-20" style={{ background: `linear-gradient(135deg, ${accentColor}05, ${primaryColor}05)` }}>
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-6 sm:mb-8" style={{ color: accentColor }}>
+              {t('wedding.dressCode') || 'Dress Code'}
+            </h2>
+            <div className="max-w-2xl mx-auto">
+              <div 
+                className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border mx-2 sm:mx-0 relative overflow-hidden"
+                style={{ borderColor: `${accentColor}20` }}
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r" style={{ background: `linear-gradient(to right, ${accentColor}, ${primaryColor})` }}></div>
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: `${accentColor}15` }}>
+                    <svg className="w-6 h-6" style={{ color: accentColor }} fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L13.09 8.26L21.88 9L14.82 16.07L16 23L12 19.65L8 23L9.18 16.07L2.12 9L10.91 8.26L12 2Z"/>
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-gray-700 leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
+                  {wedding.dressCode}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* RSVP Section */}
       <section 
         id="rsvp" 
